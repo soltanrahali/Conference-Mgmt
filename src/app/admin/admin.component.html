@@ -1,0 +1,65 @@
+<body>
+    
+
+<h2 class="background double"><span>les événements proposés</span></h2>
+
+<div *ngIf="conferences" >
+    <div *ngFor="let c of conferences._embedded.conferences">
+     <div class="col-md-6">   
+     <div class="panel panel-default">
+       <div class="panel-heading">
+           <p class="ax">{{c.titre}} </p>  
+       </div>  
+       <div class="panel-body">
+        <table class="table table-striped ">
+            <tr >
+                <td colspan="2"><img style="height: 230px; width: 100%; " class="img-thumbnail"  src= "{{this.service.host+'/conference/photoConference/'+c.id}}">
+                </td>
+            </tr>
+            <tr>
+                <td>Site Web:</td>
+                <td><a href="">{{c.site}}</a> </td> 
+            </tr>
+            <tr>
+                <td>Dates:</td>
+                <td>{{c.date_debut}}
+                 / {{c.date_fin}} </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{c.email}} </td>
+            </tr>
+            <tr>
+                <td> 
+                </td>
+                <td><span (click)="accepte(c) ">
+                    <i class="fa fa-3x" [ngClass]="{
+                           'fa-thumbs-up ':c.acceptation,
+                           'fa-thumbs-down ':!c.acceptation}">
+                    </i>
+                </span>
+                <a  (click)="ondelet(c) " class="btn btn-danger">
+                    <i class="fa fa-trash" ></i></a>
+            </td>
+                
+            </tr>
+           
+        </table>
+       </div>
+      
+     </div> 
+      
+    </div>
+    </div>
+
+</div>
+
+<div class="col-md-12 " style="background: #ffffff;">
+<ul  *ngIf="pages" class="nav nav-pills">
+    <li [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages ; let i=index">
+        <a style="cursor: pointer;" (click)="onPage(i)" > {{i}}  </a>
+    </li>
+</ul> 
+</div>
+
+</body>

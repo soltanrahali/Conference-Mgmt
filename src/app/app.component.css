@@ -1,0 +1,35 @@
+#nav img{
+    height: 55px;
+
+}
+#nav{
+    margin: 0;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    z-index: 10000;
+}
+
+
+
+
+body{
+    
+    background-image: url(/../../assets/image/1.jpg);
+    height: auto;
+    background-attachment: fixed;
+    background-size: cover;
+}
+#head img{
+    text-align: center;
+    height: 190px;
+    margin: 0;
+    width: 100%;
+}
+#fixed{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index:    20;
+}
+

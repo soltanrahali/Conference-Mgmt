@@ -1,0 +1,39 @@
+
+h2{
+    text-align: center;
+    color: rgb(51, 49, 158);
+    font-family: monospace;
+}
+p{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 20px;
+    background: #aaaaaa;
+    font-family: monospace;
+}
+h4{
+    text-align: center;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+agm-map{
+    height: 200px;
+  }
+  .example-form {
+    min-width: 50px;
+    max-width: 100px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 70%;
+    margin-left: 130px;
+  }
+  .example-button-row button
+  {
+    margin-left: 200px;
+    width: 77%;
+    top: 10px;
+  }
+
+  

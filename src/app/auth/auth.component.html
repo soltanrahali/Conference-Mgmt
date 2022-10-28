@@ -1,0 +1,53 @@
+<mat-drawer-container id="example-container" autosize>
+    <mat-drawer #drawer id="example-sidenav" mode="side">
+        
+            
+            
+                <form #f="ngForm" (ngSubmit)="onLogin(f.value)" >
+              
+                <div class="example-container">
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="UserName" 
+                        type="text" name="username" ngModel>
+                      </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                      type="password" name="password" ngModel >
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="example-button-row">
+                    
+                    <button type="submit" mat-raised-button color="primary">Login</button>
+                    
+                  </div>
+
+                </form>
+    
+    
+           
+            
+        
+    </mat-drawer>
+  
+    <div id="example-sidenav-content">
+        
+        <div class="example-button-row">
+                    
+            <button type="button" mat-button color="primary" (click)="drawer.toggle()">
+                Login
+            </button>
+            
+          </div>
+        
+        <img src="../../assets/image/admin.png">
+        
+      </div>
+  
+  </mat-drawer-container>
+
+
+

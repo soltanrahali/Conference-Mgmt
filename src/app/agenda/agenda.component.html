@@ -1,0 +1,80 @@
+<body >
+
+    <h2 class="background double"><span>Tous les évènements</span></h2>
+
+<div class="row"  >
+<div class="col-md-6" style="margin-top: 20px;margin-left: 30px;">
+<div *ngIf="conferences">
+<div *ngFor="let c of conferences._embedded.conferences">
+<table class="table table-striped">
+    <tr>
+        <td rowspan="4">    <img class="img-rounded"  src= "{{this.service.host+'/conference/photoConference/'+c.id}}">
+        </td>
+        <td style="border-style: solid ;border-width: 1px;border-top: none; border-left: none;border-right:none ; ">
+          <a  (click)="getDetails(c) " > <p style="font-family: cursive;cursor: pointer;">{{c.titre}}</p></a>
+        </td>
+      </tr>
+      <tr >
+          
+            <td>Catégorie :{{c.categorie}}</td>
+    
+      </tr>
+      <tr>
+          <td >{{c.date_debut}} {{c.date_fin}}</td>
+      </tr>
+      <tr>
+          <td></td>
+      </tr>
+      <tr>
+        <td> <br><br><br> </td>
+    </tr>
+    </table>
+</div>
+</div>
+</div>
+
+<div class="col-md-5"  style="position: relative; display: grid;">
+<p style="border-style: solid;font-family: monospace;font-size: 16px;color: #49a0f1;
+border-top: none;border-left: none;border-right: none">Quelques manifestations scientifiques organisées 
+</p>
+-Atelier doctoral en partenariat avec l’AGRH : "Les journées de recherche en GRH".
+<br>
+<br>
+-1ème Edition des Doctoriales en Management.
+<br>
+<br>
+-13e Université de printemps de l’IAS : "Audit social et Valeur(s)".
+<br>
+<br>
+-8e rencontres internationales de la diversité, "Diversité(s), RSE et solidarité".
+<br>
+<br>
+-Séminaire en finance sous le thème ‘’Initiation au Trading online’’.
+<br>
+<br>
+
+-1er Congrès International en Finance Ethique et Islamique, « Finances alternatives et crise : finance éthique, responsable, participative, islamique ».
+<br><br>
+<p style="border-style: solid;font-family: monospace;font-size: 16px;color: #49a0f1;
+border-top: none;border-left: none;border-right: none">Actualités
+</p>
+<br>
+<br>
+<a >-Ateliers sur l’Amélioration de la Visibilité Internationale des Etablissements de Recherche Marocains.
+</a>
+<br>
+<br>
+-Avis aux usagers de la Bibliothèque.
+<br>
+<br>
+-Avis aux usagers des services des UATRS.
+<br><br>
+-Covid-19: 2ème liste des projets retenus pour cofinancement.
+</div>
+
+</div>
+    
+  
+
+</body>
+

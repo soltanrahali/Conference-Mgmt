@@ -1,0 +1,80 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+img{
+    height: 150px;
+    width: 150px;
+}
+#md{
+ display: grid;
+  position: relative;
+}
+
+
+
+
+h2 {
+  font: 33px sans-serif;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.r{
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  
+}
+.ax{
+  text-align: center;
+  position: absolute;
+}
+
+
+h2.background {
+  position: relative;
+  z-index: 0;
+}
+h2.background:before {
+      border-top: 2px solid #dfdfdf;
+      content:"";
+      margin: 0 auto; /* this centers the line to the full width specified */
+      position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+      top: 50%; left: 0; right: 0; bottom: 0;
+      width: 95%;
+      
+  }
+
+  span { 
+      /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+      background: #fff; 
+      padding: 0 15px; 
+  }
+
+
+h2.double:before { 
+  /* this is just to undo the :before styling from above */
+  border-top: none; 
+}
+
+h2.double:after {
+  border-bottom: 5px solid rgb(40, 40, 54);
+  
+  content: "";
+  margin: 0 auto; /* this centers the line to the full width specified */
+  position: absolute;
+  top: 45%; left: 0; right: 0;
+  width: 95%;
+  z-index: -1;
+}
+

@@ -1,0 +1,187 @@
+<body style="margin-top: 30px;">
+<div *ngIf="currentconference">
+    <div class="panel panel-default" >
+    <div class="panel-heading">
+      Fiche Conférence : <h2> {{currentconference.titre}}
+      </h2>    
+    </div>
+      <div class="panel-body">
+        <img class="img-rounded" style="width: 100%;"
+          src= "{{this.service.host+'/conference/photoConference/'+currentconference.id}}">
+
+        <table style="width: 100%;" >
+          <tbody>
+            <tr>
+              <td><p>
+                Dates : {{currentconference.date_debut}}
+                /
+                {{currentconference.date_fin}}
+               </p></td>
+               <td></td>
+            </tr>
+            <tr>
+              <td><p>categorie : {{currentconference.categorie}}</p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <p> <a> {{currentconference.site}}</a></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>{{currentconference.email}}</p>
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>
+          {{currentconference.description}}
+        </h4>
+        <a class="btn btn-primary" (click)="getlocal(currentconference) " (click)="getplan(currentconference) " style="cursor: pointer;" >
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          Plus info </a>
+        
+    </div>
+
+  </div>
+
+<div *ngIf="localisations">
+  
+<div *ngFor="let l of localisations._embedded.localisations"
+ class="panel panel-primary" style="width: 50%; margin-left: 25%;" >
+  
+  <div class="panel-body">
+    <h1 style="text-align: center; font-family: monospace;">lieu</h1>
+    <h3 style="font-family: monospace;">ville : <h3 style="color: rgb(68, 150, 245);">{{l.ville}}</h3></h3>
+    <h3 style="font-family: monospace;">adresse : <h3 style="color: rgb(68, 150, 245); ">{{l.adresse}}</h3></h3>
+    <h3 style="font-family: monospace;">pays : <h3 style="color: rgb(68, 150, 245);">{{l.pays}}</h3></h3>
+
+    <agm-map [latitude]="latitude" [longitude]="longitude" >
+    <agm-marker
+      [latitude]="latitude"
+      [longitude]="longitude"
+     ></agm-marker>
+  </agm-map>
+    
+
+  </div>
+  
+</div>
+
+
+</div>
+
+<div *ngIf="plannings" id="table">
+<div *ngFor="let p of plannings._embedded.plannings">
+<h4 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;font-size: 45px; ">Programme général</h4>
+<div   style="width: 90%; margin-left: 5%;" >
+<table id="table" style="width: 100%;">
+  <tr >
+    <td>
+        
+        <div style="background-color: #62c2fa;" class="panel panel-heading">
+          {{p.tempa}}
+        </div>
+    </td>
+    <td>
+      <div class="panel panel-body">
+        <h3 > {{p.programmea}}</h3>  
+      </div>
+    </td>
+  </tr>
+    <tr >
+      <td>
+          
+          <div style="background-color: #62c2fa;" class="panel panel-heading">
+            {{p.tempb}}
+          </div>
+      </td>
+      <td>
+        <div class="panel panel-body">
+          <h3 > {{p.programmeb}}</h3>  
+        </div>
+      </td>
+    </tr>
+    <tr >
+      <td>
+          
+          <div style="background-color: #62c2fa;" class="panel panel-heading">
+            {{p.tempc}}
+          </div>
+      </td>
+      <td>
+        <div class="panel panel-body">
+          <h3 > {{p.programmec}}</h3>  
+        </div>
+      </td>
+    </tr>
+    <tr >
+      <td>
+          
+          <div style="background-color: #62c2fa;" class="panel panel-heading">
+            {{p.tempd}}
+          </div>
+      </td>
+      <td>
+        <div class="panel panel-body">
+          <h3 > {{p.programmed}}</h3>  
+        </div>
+      </td>
+    </tr>
+  
+</table>
+</div>
+</div>  
+
+</div>
+<flash-messages></flash-messages>
+<div class=" col-md-13">
+  
+  <div class="panel panel-default">
+  <div class="panel panel-heading">
+    <h4>êtes-vous intéressé par cet événement? </h4>
+
+  </div>
+  <div class="panel panel-body">
+    
+    <samp style="color: #62c2fa;">Remplir le Formulaire</samp>
+    <form  [formGroup]="reactiveForm" >
+      
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nom" type="text" name="nom" formControlName="nom"
+            [(ngModel)]="participant.nom">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Prenom" type="text" name="prenom" formControlName="prenom"
+            [(ngModel)]="participant.prenom">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" type="text" name="email" formControlName="email"
+            [(ngModel)]="participant.email">
+      </mat-form-field>
+  
+
+
+      <div class="example-button-row" style="margin-left: 80px;">
+        <button mat-stroked-button color="primary" style="margin-left: 50px;"
+        (click)="addParticipant(currentconference.id)" >
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          Save
+        </button>
+      </div>
+  
+    </form>
+  </div>
+  </div>
+
+
+ 
+</div>
+
+</div>
+
+
+</body>

@@ -1,0 +1,297 @@
+
+
+<body style="margin-top: 30px;">
+  
+<mat-horizontal-stepper labelPosition="bottom"  #stepper>
+  <mat-step>
+    <ng-template matStepLabel >Nouvel évènement</ng-template>
+  <div class="cont ">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h4>Nouvel Évènement</h4>
+      </div>
+      <div class="panel-body">
+        <div class="example-container">
+          <form  [formGroup]="reactiveForm4" >
+            <div class="col-md-3">
+            <mat-form-field>
+              <input matInput placeholder="Titre" type="text" name="titre" formControlName="titre"
+                  [(ngModel)]="conference.titre">
+            </mat-form-field>
+            
+            <mat-form-field>
+              <mat-select placeholder="Catégorie" type="text" name="categorie" formControlName="categorie"
+                   [(ngModel)]="conference.categorie">
+              <mat-option value="Divers">Divers</mat-option>
+              <mat-option value="Lettres rt sciences humaines">Lettres rt sciences humaines</mat-option>
+              <mat-option value="Sciences de l'ingénieur">Sciences de l'ingénieur</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            </div>
+            
+            <div class="col-md-3">
+            <mat-form-field>
+              <input matInput placeholder="Email" type="text"  name="email" formControlName="email"
+                  [(ngModel)]="conference.email">
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input matInput placeholder="Site Web" type="text"  name="site" formControlName="site"
+                  [(ngModel)]="conference.site">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+
+            <span >
+              <input type="file" (change)="onSelectedFile($event)">
+              <p>Ajouter une Photo</p>
+              
+            </span>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+          
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h4>Dates</h4>
+      </div>
+      <div class="panel-body">
+        <p>Évènement sur une période</p>
+          <form  [formGroup]="reactiveForm4" >
+        <p>
+          <label class="control-label">Date début</label><br>
+          <input  type="date" name="date_debut" formControlName="date_debut"
+             [(ngModel)]="conference.date_debut" />
+        </p><br>
+        <p>
+          <label class="control-label">Date fin</label><br>
+          <input  type="date" name="date_fin" formControlName="date_fin"
+              [(ngModel)]="conference.date_fin" />
+        </p>
+          </form>
+      </div>
+    </div>
+  </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h4>Description</h4>
+      </div>
+      <div class="panel-body">
+        <form  [formGroup]="reactiveForm4" >
+          <label for="description">Texte de description</label>
+          <textarea class="form-control" rows="5" id="description" type="text" name="description" formControlName="description"
+              [(ngModel)]="conference.description"></textarea> 
+        </form>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h4>Lieu de  Évènement</h4>
+      </div>
+      <div class="panel-body">
+
+
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+    <agm-marker
+      [latitude]="latitude"
+      [longitude]="longitude"
+      *ngIf="locationChosen"></agm-marker>
+  </agm-map>
+
+
+      <form  [formGroup]="reactiveForm" >   
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="longitude" name="longitude" formControlName="longitude"
+              [(ngModel)]='localisation.longitude' value= {{longitude}}  />
+              </mat-form-field></td>
+          
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="latitude" name="latitude" formControlName="latitude"
+                 [(ngModel)]='localisation.latitude' value= {{latitude}}  />
+              </mat-form-field></td>
+        </tr>
+        
+        <tr>
+
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Adresse" type="text" name="Adresse" formControlName="adresse"
+                [(ngModel)]="localisation.adresse" />
+              </mat-form-field></td>
+          <td><mat-form-field class="example-full-width" >
+            <input matInput placeholder="Ville" type="text" name="Ville" formControlName="ville"
+                [(ngModel)]="localisation.ville" />
+              </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Pays" type="text" name="Pays" formControlName="pays"
+                [(ngModel)]="localisation.pays" />
+              </mat-form-field></td>
+              
+
+        </tr>
+        
+
+      </table>  
+      </form>
+      </div> 
+    </div>
+          <!------>
+    <div>
+        <button class="btn btn-primary" mat-button matStepperNext>Next</button>
+    </div>
+
+  </mat-step>
+  <mat-step>
+    <!------------>
+    <form [formGroup]="reactiveForm5">
+      <ng-template matStepLabel>Le Comité</ng-template>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4>Ajouter Les membre de Comité </h4>
+        </div>
+        <div class="panel-body" >
+          <div class="col-md-6" >
+          <mat-form-field >
+            <input matInput placeholder="Nom" type="text" name="nom" formControlName="nom"
+                [(ngModel)]="comite.nom">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Prénom" type="text" name="prenom" formControlName="prenom"
+                 [(ngModel)]="comite.prenom">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Téléphone" type="text" name="tel" formControlName="tel" 
+                 [(ngModel)]="comite.tel">
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput placeholder="Email" type="text" name="email" formControlName="email"
+                 [(ngModel)]="comite.email">
+          </mat-form-field>
+        </div>
+          <mat-form-field>
+            <mat-select placeholder="Catégorie" type="text" name="categorie" formControlName="categorie"
+                  [(ngModel)]="comite.categorie">
+              <mat-option value="conference proposal">conference proposal</mat-option>
+              <mat-option value="Honorary Chairs">Honorary Chairs</mat-option>
+              <mat-option value="Chairs">Chairs</mat-option>
+              <mat-option value="Co-Chairs">Co-Chairs</mat-option>
+              <mat-option value="scientific Committee">scientific Committee</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <div class="example-button-row">
+            <button mat-raised-button color="primary"
+                (click)="saveComite()" (click)="getComite()">Ajouter</button>   
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h4>Liste de Comité</h4>
+      </div>
+      <div class="panel-body">
+      <table class="table table-striped " *ngIf="comites">
+        <thead >
+         <tr>
+           <th>Nom</th>
+           <th>Prénom</th>
+           <th>Email</th>
+           <th>Téléphone</th>
+           <th>Catégorie</th>
+           <th></th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let c of comites._embedded.comites"  >
+           <td>{{c.nom}}  </td>
+           <td>{{c.prenom}} </td>
+           <td>{{c.email}} </td>
+           <td>{{c.tel}} </td>
+           <td>{{c.categorie}} </td>
+             <a (click)="ondelet(c) " class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+         </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+      <div>
+        <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
+        <button class="btn btn-primary" mat-button matStepperNext>Next</button>
+      </div>
+      <!----------->    
+      
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      
+      
+     <div style="margin-left: 30px;">
+      <form  [formGroup]="reactiveForm6">
+        <flash-messages></flash-messages>
+        <table>
+          <thead style="background: rgba(77, 74, 74, 0.2);">
+                  <tr> 
+                     <th></th>
+                      <th><h4>Le Programme  :</h4>  </th>
+                     </tr>
+          </thead>
+          <tbody >
+            <tr >
+              <td >
+                <h3 >La durée</h3>
+                  <input type="text"  name="tempa" formControlName="tempa" [(ngModel)]="planning.tempa">
+               
+                
+              </td>
+              <td><textarea class="form-control" rows="4" cols="70"  type="text" name="programmea" formControlName="programmea" [(ngModel)]="planning.programmea" >
+              </textarea></td>
+            </tr>
+            <tr>
+              <td><h3 >La durée</h3>
+                <input type="text"  name="tempb" formControlName="tempb" [(ngModel)]="planning.tempb" >
+              </td>
+              <td><textarea class="form-control" rows="4" cols="70"  type="text" name="programmeb" formControlName="programmeb" [(ngModel)]="planning.programmeb">
+              </textarea></td>
+            </tr>
+            <tr>
+              <td><h3 >La durée</h3><input type="text"  name="tempc" formControlName="tempc" [(ngModel)]="planning.tempc" >
+              </td>
+              <td><textarea class="form-control" rows="4" cols="70"  type="text" name="programmec" formControlName="programmec" [(ngModel)]="planning.programmec">
+              </textarea></td>
+            </tr>
+            <tr>
+              <td><h3 >La durée</h3><input type="text"  name="tempd" formControlName="tempd" [(ngModel)]="planning.tempd" >
+              </td>
+              <td><textarea class="form-control" rows="4" cols="70"  type="text" name="programmed" formControlName="programmed" [(ngModel)]="planning.programmed">
+              </textarea></td>
+            </tr>
+          </tbody>
+        </table>
+        
+       
+      </form>
+      
+    </div>
+      <div>
+          <button class="btn btn-primary" mat-button matStepperPrevious >Back</button>
+          <button class="btn btn-primary" mat-button  (click)="uploadPhoto()" >Reset</button>
+      </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+
+</body>
